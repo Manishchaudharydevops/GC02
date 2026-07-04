@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Groundcheck — Validate ideas against real evidence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="desk">
+
+  <header class="masthead">
+    <div class="masthead__mark">
+      <span class="masthead__dot"></span>
+      GROUNDCHECK
+    </div>
+    <div class="masthead__meta">EVIDENCE FILE · DEMO DATASET</div>
+  </header>
+
+  <main class="case">
+
+    <section class="case__intake">
+      <p class="case__eyebrow">Case Intake — No. <span id="caseNumber">0000</span></p>
+      <h1 class="case__title">Don't guess if it'll sell.<br>Read the file first.</h1>
+      <p class="case__sub">Describe the idea. Groundcheck pulls the closest matching community evidence and gives you a verdict you can trace, line by line, back to its source. This build runs on a small demo dataset — not live Reddit — so you can see exactly how the pipeline reasons before pointing it at real data.</p>
+
+      <form id="ideaForm" class="intake-form">
+        <label for="ideaInput" class="intake-form__label">STATE THE IDEA FOR THE RECORD</label>
+        <textarea id="ideaInput" class="intake-form__input" rows="3" placeholder="e.g. A single-serving meal kit priced cheaper than groceries, for people who live alone" required></textarea>
+        <div class="intake-form__row">
+          <button type="submit" class="btn-primary" id="submitBtn">Open the file</button>
+          <span class="intake-form__hint">Try: resume tools, pet tech, freelance invoicing, budgeting apps…</span>
+        </div>
+      </form>
+    </section>
+
+    <section class="case__result" id="resultSection" hidden>
+
+      <div class="loading" id="loadingState" hidden>
+        <div class="loading__ticker" id="loadingTicker">Pulling matching testimony…</div>
+      </div>
+
+      <div class="verdict" id="verdictBlock" hidden>
+        <div class="stamp" id="stamp">
+          <span id="stampLabel">STRONG SIGNAL</span>
+        </div>
+
+        <div class="verdict__body">
+          <div class="verdict__score-row">
+            <div class="verdict__score" id="verdictScore">7<span>/10</span></div>
+            <p class="verdict__line" id="verdictLine">One-line verdict goes here.</p>
+          </div>
+
+          <div class="sentiment-bar" id="sentimentBar" aria-label="Sentiment breakdown">
+            <div class="sentiment-bar__segment sentiment-bar__segment--pos" id="segPos"></div>
+            <div class="sentiment-bar__segment sentiment-bar__segment--neu" id="segNeu"></div>
+            <div class="sentiment-bar__segment sentiment-bar__segment--neg" id="segNeg"></div>
+          </div>
+          <div class="sentiment-legend">
+            <span><i class="dot dot--pos"></i>Positive <b id="pctPos">0%</b></span>
+            <span><i class="dot dot--neu"></i>Neutral <b id="pctNeu">0%</b></span>
+            <span><i class="dot dot--neg"></i>Negative <b id="pctNeg">0%</b></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dossier" id="themesBlock" hidden>
+        <h2 class="dossier__title">Recurring themes in the evidence</h2>
+        <div class="theme-list" id="themeList"></div>
+      </div>
+
+      <div class="dossier" id="citationsBlock" hidden>
+        <h2 class="dossier__title">Cited testimony</h2>
+        <div class="citation-list" id="citationList"></div>
+      </div>
+
+      <div class="dossier" id="recBlock" hidden>
+        <h2 class="dossier__title">Recommended next step</h2>
+        <p class="rec-text" id="recText"></p>
+      </div>
+
+      <div class="error-block" id="errorBlock" hidden>
+        <p id="errorText"></p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <p>Groundcheck is a demo build. Evidence is drawn from a fixed synthetic dataset, not a live Reddit feed — see the README for wiring in real data sources.</p>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

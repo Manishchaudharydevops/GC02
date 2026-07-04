@@ -1,0 +1,10 @@
+[project]
+name = "groundcheck"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic==0.40.0",
+]
+
+[tool.vercel]
+entrypoint = "api.ask:handler"
